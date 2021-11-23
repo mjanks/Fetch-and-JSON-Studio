@@ -8,16 +8,19 @@ window.addEventListener('load', () => {
       const result = json.sort((a, b) =>
         a.hoursInSpace < b.hoursInSpace ? 1 : -1
       );
-      // let sortedArr = sortByHours(json);
-      // console.log('sortedArr: ', sortedArr);
       for (let item of result) {
+        if (item.active) {
+          color = 'green';
+        } else {
+          color = '';
+        }
         container.innerHTML += `
         <div class="astronaut">
           <div class="bio">
             <h3>${item.firstName} ${item.lastName}</h3>
             <ul>
               <li>Hours in space: ${item.hoursInSpace}</li>
-              <li>Active: ${item.active}</li>
+              <li style="color: ${color};">Active: ${item.active}</li>
               <li>Skills: ${item.skills.join(', ')}</li>
             </ul>
           </div>
