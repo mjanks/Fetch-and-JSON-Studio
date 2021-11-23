@@ -5,7 +5,12 @@ window.addEventListener('load', () => {
   ).then(res => {
     res.json().then(json => {
       const container = document.getElementById('container');
-      for (let item of json) {
+      const result = json.sort((a, b) =>
+        a.hoursInSpace < b.hoursInSpace ? 1 : -1
+      );
+      // let sortedArr = sortByHours(json);
+      // console.log('sortedArr: ', sortedArr);
+      for (let item of result) {
         container.innerHTML += `
         <div class="astronaut">
           <div class="bio">
@@ -13,7 +18,7 @@ window.addEventListener('load', () => {
             <ul>
               <li>Hours in space: ${item.hoursInSpace}</li>
               <li>Active: ${item.active}</li>
-              <li>Skills: ${item.skills}</li>
+              <li>Skills: ${item.skills.join(', ')}</li>
             </ul>
           </div>
           <img class="avatar" src="${item.picture}">
@@ -22,7 +27,7 @@ window.addEventListener('load', () => {
       }
       container.innerHTML += `
       <div>
-        <h1>Total number of astronaunts: ${json.length}</h1>
+        <h1>Total number of astronaunts: ${result.length}</h1>
       </div>
       `;
     });
