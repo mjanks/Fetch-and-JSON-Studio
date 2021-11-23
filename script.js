@@ -20,6 +20,11 @@ window.addEventListener('load', () => {
         </div>
         `;
       }
+      container.innerHTML += `
+      <div>
+        <h1>Total number of astronaunts: ${json.length}</h1>
+      </div>
+      `;
     });
   });
 });
