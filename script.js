@@ -5,9 +5,7 @@ window.addEventListener('load', () => {
   ).then(res => {
     res.json().then(json => {
       const container = document.getElementById('container');
-      let index = 0;
       for (let item of json) {
-        console.log(item);
         container.innerHTML += `
         <div class="astronaut">
           <div class="bio">
